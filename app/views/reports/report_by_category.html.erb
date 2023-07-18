@@ -1,0 +1,44 @@
+<div class="card text-center">
+  <div class="card-header">
+    <%= params[:spend] == 0 ? 'Дохід' : 'Витрата'%>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Дата з: <%= params["start_date"]%> по: <%= params["end_date"] %></h5>
+    <div>
+      <canvas id="lineChart"></canvas>
+    </div>
+
+    <script>
+
+      const data = {
+        labels: <%= raw @categories %>,
+        datasets: [
+          {
+            label: 'грн',
+            data: <%= raw  @operations %>,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Optional
+            borderColor: 'rgba(75, 192, 192, 1)', // Optional
+            borderWidth: 1 // Optional
+          }
+        ]
+      };
+
+      // Chart configuration
+      const config = {
+        type: 'line',
+        data: data,
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      };
+
+      // Create the chart
+      const lineChart = new Chart(document.getElementById('lineChart'), config);
+    </script>
+  </div>
+</div>

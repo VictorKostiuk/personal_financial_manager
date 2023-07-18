@@ -31,6 +31,17 @@
     <%= form.collection_select :category_id, Category.all, :id, :name %>
   </div>
 
+  <div class="form-check form-check-inline">
+    <%= label :spend, "Витрата", value: true %>
+    <%= form.radio_button :spend, false, :checked => true, :value => false, class: "form-check-input" %>
+  </div>
+  <div class="form-check form-check-inline">
+    <%= label :spend, "Дохід", value: false %>
+    <%= form.radio_button :spend, true, :value => true, class: "form-check-input" %>
+  </div>
+
+
+
   <div>
     <%= form.submit %>
   </div>

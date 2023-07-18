@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Звіт по категоріях</h5>
+        <p class="card-text">
+          <%= render 'report_by_form', type: report_by_category_path %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Звіт по датах</h5>
+        <p class="card-text">
+          <%= render 'report_by_form', type: report_by_dates_path %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

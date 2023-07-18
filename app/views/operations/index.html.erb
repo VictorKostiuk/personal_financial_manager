@@ -1,14 +1,37 @@
-<p style="color: green"><%= notice %></p>
+<p class="text-success"><%= notice %></p>
 
 <h1>Operations</h1>
 
 <div id="operations">
   <% @operations.each do |operation| %>
-    <%= render operation %>
-    <p>
-      <%= link_to "Show this operation", operation %>
-    </p>
+    <div id="<%= dom_id operation %>" class="card mb-3">
+      <div class="card-body">
+        <p class="card-text">
+          <strong>Amount:</strong>
+          <%= operation.amount %>
+        </p>
+
+        <p class="card-text">
+          <strong>Odate:</strong>
+          <%= operation.odate %>
+        </p>
+
+        <p class="card-text">
+          <strong>Description:</strong>
+          <%= operation.description %>
+        </p>
+
+        <p class="card-text">
+          <strong>Category:</strong>
+          <%= operation.category_id %>
+        </p>
+
+      </div>
+      <p>
+        <%= link_to "Show this operation", operation, class: "btn btn-primary" %>
+      </p>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New operation", new_operation_path %>
+<%= link_to "New operation", new_operation_path, class: "btn btn-success" %>

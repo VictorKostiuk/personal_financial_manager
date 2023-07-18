@@ -1,0 +1,24 @@
+<%= form_tag type, method: :get do %>
+  <% if type == report_by_category_path %>
+    <%= select_tag("id", options_for_select(Category.all.map{ |u| [ u.name, u.id ] }, params[:id]), include_blank: "Всі категорії", class: "form-select") %>
+  <% end %>
+  <div>
+    <%= label :start_date, "Дата з:" %>
+    <%= date_field_tag 'start_date', Date.today, class: 'form-control' %>
+  </div>
+  <div>
+    <%= label :end_date, "Дата по:" %>
+    <%= date_field_tag 'end_date', Date.today, class: 'form-control' %>
+  </div>
+  <br>
+  <div class="form-check form-check-inline">
+    <%= radio_button_tag :spend, 1, false %>
+    <%= label :spend, "Дохід", value: true %>
+  </div>
+  <div class="form-check form-check-inline">
+    <%= radio_button_tag :spend, 0, true %>
+    <%= label :spend, "Витрата", value: false %>
+  </div>
+  <hr>
+  <%= submit_tag 'Генерувати', class: 'btn btn-primary' %>
+<% end %>
