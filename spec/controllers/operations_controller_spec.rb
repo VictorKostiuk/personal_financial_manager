@@ -114,6 +114,19 @@ RSpec.describe OperationsController, type: :controller do
           expect(response).to render_template(:edit)
         end
       end
+
+      describe 'DELETE #destroy' do
+        let(:operation) { create(:operation) }
+
+        it 'destroys the operation' do
+          expect {
+            delete :destroy, params: { id: operation.id }
+          }.to change(Operation, :count).by(-1)
+
+          expect(response).to redirect_to(operations_path)
+          expect(flash[:notice]).to eq('Operation was successfully destroyed.')
+        end
+      end
     end
   end
 end
