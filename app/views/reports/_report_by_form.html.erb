@@ -1,4 +1,4 @@
-<%= form_tag type, method: :get do %>
+<%= form_tag type, method: :get, data: { turbo: "false" } do %>
   <% if type == report_by_category_path %>
     <%= select_tag("id", options_for_select(Category.all.map{ |u| [ u.name, u.id ] }, params[:id]), include_blank: "Всі категорії", class: "form-select") %>
   <% end %>

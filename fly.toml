@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for personal-finance-manager on 2023-07-18T23:25:39+03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "personal-finance-manager"
+primary_region = "waw"
+console_command = "/rails/bin/rails console"
+
+[deploy]
+  release_command = "./bin/rails db:prepare"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[statics]]
+  guest_path = "/rails/public"
+  url_prefix = "/"
