@@ -21,5 +21,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  username: postgres
+  password: RUWR4sFKKmDgBhQ
+  host: personal-finance-manager-db.internal
+  adapter: postgresql
+  database: personal-finance-manager-db
