@@ -1,0 +1,14 @@
+
+<div id="<%= dom_id category %>" class="card mb-3">
+  <div class="card-body">
+    <p class="card-title">
+      <b>Name: </b><%= category.name %>
+    </p>
+    <p class="card-title">
+      <b>Description: </b><%= category.description %>
+    </p>
+  </div>
+  <p>
+    <%= link_to "Show this category", category, class: "btn btn-primary" %>
+  </p>
+</div>
