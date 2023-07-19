@@ -22,7 +22,7 @@ test:
 
 production:
   username: postgres
-  password: pFTdMLJlOPZJLDO
+  password: gc1nI1MWWgGSRhb
   host: personal-finance-manager-db.internal
   adapter: postgresql
   database: personal-finance-manager-db

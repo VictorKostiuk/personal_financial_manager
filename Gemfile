@@ -60,6 +60,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development do
