@@ -2,9 +2,14 @@
 
 <h1>Categories</h1>
 
-<div id="categories">
+<div class="mt-3" id="categories">
   <% @categories.each do |c| %>
     <%= render 'category', category: c %>
+
+    <div class="mb-3">
+      <%= link_to "Show this category", c, class: "btn btn-dark" %>
+      <%= link_to "Edit this category", edit_category_path(c), class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>
 

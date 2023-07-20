@@ -3,16 +3,15 @@ class ReportsController < ApplicationController
   end
 
   def report_by_category
-    collection = params[:id].blank? ? Operation.joins(:category).where(spend: params[:spend], odate: (params[:start_date]..params[:end_date])).sum(:amount)
-                   : Operation.joins(:category).where(category_id: params[:id], odate: (params[:start_date]..params[:end_date])).group(:name).sum(:amount)
-
-    if params[:id].blank? && collection.integer?
-      @operations = collection
-      @categories = collection
+    if params[:id].blank?
+      collection = Operation.where(spend: params[:spend], odate: (params[:start_date]..params[:end_date])).group(:odate).sum(:amount)
     else
-      @operations = collection.values
-      @categories = collection.keys
+      collection = Operation.where(category_id: params[:id])
+      collection = collection.where(spend: params[:spend], odate: (params[:start_date]..params[:end_date])).group(:odate).sum(:amount)
     end
+
+    @operations = collection.map{ |k,v| k.to_s}
+    @categories = collection.values
   end
 
 

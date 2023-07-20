@@ -1,24 +1,24 @@
 <%= form_tag type, method: :get, data: { turbo: "false" } do %>
   <% if type == report_by_category_path %>
-    <%= select_tag("id", options_for_select(Category.all.map{ |u| [ u.name, u.id ] }, params[:id]), include_blank: "Всі категорії", class: "form-select") %>
+    <%= select_tag("id", options_for_select(Category.all.map{ |u| [ u.name, u.id ] }, params[:id]), include_blank: "All categories", class: "form-select") %>
   <% end %>
   <div>
-    <%= label :start_date, "Дата з:" %>
+    <%= label :start_date, "Date from:" %>
     <%= date_field_tag 'start_date', Date.today, class: 'form-control' %>
   </div>
   <div>
-    <%= label :end_date, "Дата по:" %>
+    <%= label :end_date, "Date to:" %>
     <%= date_field_tag 'end_date', Date.today, class: 'form-control' %>
   </div>
   <br>
   <div class="form-check form-check-inline">
     <%= radio_button_tag :spend, 1, false %>
-    <%= label :spend, "Дохід", value: true %>
+    <%= label :spend, "Income", value: true %>
   </div>
   <div class="form-check form-check-inline">
     <%= radio_button_tag :spend, 0, true %>
-    <%= label :spend, "Витрата", value: false %>
+    <%= label :spend, "Expense", value: false %>
   </div>
   <hr>
-  <%= submit_tag 'Генерувати', class: 'btn btn-primary' %>
+  <%= submit_tag 'Generate', class: 'btn btn-dark' %>
 <% end %>

@@ -2,7 +2,7 @@
 
 <h1>Operations</h1>
 
-<div id="operations">
+<div class="mt-3" id="operations">
   <% @operations.each do |operation| %>
     <div id="<%= dom_id operation %>" class="card mb-3">
       <div class="card-body">
@@ -13,7 +13,7 @@
 
         <p class="card-text">
           <strong>Odate:</strong>
-          <%= operation.odate %>
+          <%= operation.odate.strftime("%d.%m.%Y %k:%M") %>
         </p>
 
         <p class="card-text">
@@ -24,9 +24,9 @@
         <p class="card-text">
           <strong>Type:</strong>
           <% if operation.spend %>
-            Дохід
+            Income
           <% else %>
-            Витрата
+            Expense
           <% end %>
         </p>
 
@@ -37,7 +37,7 @@
 
       </div>
       <p>
-        <%= link_to "Show this operation", operation, class: "btn btn-primary" %>
+        <%= link_to "Show this operation", operation, class: "btn btn-dark" %>
       </p>
     </div>
   <% end %>

@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Recent income</h5>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col">Show</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% recent_income.each_with_index do |ri, i|%>
+            <tr>
+              <th scope="row"><%= i + 1 %></th>
+              <td><%= ri.amount %></td>
+              <td><%= ri.odate.strftime("%d.%m.%Y %k:%M") %></td>
+              <td><%= link_to 'Show', operation_path(ri), class: 'btn btn-dark' %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Recent expenses</h5>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col">Show</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% recent_expenses.each_with_index do |re, i|%>
+            <tr>
+              <th scope="row"><%= i + 1 %></th>
+              <td><%= re.amount %></td>
+              <td><%= re.odate.strftime("%d.%m.%Y %k:%M") %></td>
+              <td><%= link_to 'Show', operation_path(re), class: 'btn btn-dark' %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-header">
+    <h5 class="card-title">Top categories</h5>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Operations</th>
+        <th scope="col">Show</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% top_categories.each_with_index do |tc, i|%>
+        <tr>
+          <th scope="row"><%= i + 1 %></th>
+          <td><%= tc.name %></td>
+          <td><%= tc.operations.count %></td>
+          <td><%= link_to 'Show', category_path(tc), class: 'btn btn-dark' %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

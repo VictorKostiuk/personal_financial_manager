@@ -1,14 +1,12 @@
 <div class="card text-center">
   <div class="card-header">
-    <%= params["spend"] == 0 ? 'Витрата' : 'Дохід' %>
+    <h5 class="card-title">Date from: <%= params["start_date"] %> to: <%= params["end_date"] %></h5>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Дата з: <%= params["start_date"] %> по: <%= params["end_date"] %></h5>
-    <div class="chart-container">
-      <canvas id="lineChart"></canvas>
-    </div>
+    <canvas id="lineChart"></canvas>
   </div>
 </div>
+<%=link_to 'Back', :back, class: 'btn btn-dark mt-3' %>
 <script>
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -16,7 +14,7 @@
       labels: <%= raw @dates %>,
       datasets: [
         {
-          label: 'грн',
+          label: 'UAH',
           data: <%= raw @amount %>,
           backgroundColor: 'rgba(75, 192, 192, 0.2)', // Optional
           borderColor: 'rgba(75, 192, 192, 1)', // Optional
