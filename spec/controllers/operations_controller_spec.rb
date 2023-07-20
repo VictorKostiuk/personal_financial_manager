@@ -116,7 +116,7 @@ RSpec.describe OperationsController, type: :controller do
       end
 
       describe 'DELETE #destroy' do
-        let(:operation) { create(:operation) }
+        let!(:operation) { create(:operation) }
 
         it 'destroys the operation' do
           expect {

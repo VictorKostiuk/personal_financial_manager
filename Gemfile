@@ -58,6 +58,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_bot_rails'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'faker'
   gem 'rails-controller-testing'
