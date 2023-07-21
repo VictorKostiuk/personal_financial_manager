@@ -55,15 +55,16 @@ RSpec.describe OperationsController, type: :controller do
 
     describe 'POST #create' do
       context 'when the operation is valid' do
+        let!(:category) { create(:category) }
         it 'creates a new operation' do
           expect do
-            post :create, params: { operation: { amount: 100, odate: '2023-07-19 15:01:59', spend: true, description: 'A new operation', category_id: 1 } }
+            post :create, params: { operation: { amount: 100, odate: 'Thu, 20 Jul 2023 03:51:00.000000000 UTC +00:00', spend: true, description: 'A new operation', category_id: category.id } }
           end.to change(Operation, :count).by(1)
         end
 
         it 'redirects to the index page' do
-          post :create, params: { operation: { amount: 100, odate: '2023-07-19 15:01:59', spend: true, description: 'A new operation', category_id: 1 } }
-          expect(response).to redirect_to(operations_path)
+          post :create, params: { operation: { amount: 100, odate: 'Thu, 20 Jul 2023 03:51:00.000000000 UTC +00:00', spend: true, description: 'A new operation', category_id: 1 } }
+          expect(response).to redirect_to(operation_path(1))
         end
       end
 
@@ -83,18 +84,19 @@ RSpec.describe OperationsController, type: :controller do
 
     describe 'PATCH #update' do
       context 'when the operation is valid' do
-        let(:operation) { create(:operation, amount: 100) }
+        let!(:category) { create(:category, id: 2) }
+        let!(:operation) { create(:operation) }
 
         it 'updates the operation' do
-          patch :update, params: { id: operation.id, operation: { amount: 200, odate: '2023-23-09', spend: false, description: 'An updated operation', category_id: 2 } }
+          patch :update, params: { id: operation.id, operation: { amount: 200, odate: '2023-07-21 00:00:00.000000000 +0000', spend: false, description: 'An updated operation', category_id: category.id } }
           operation.reload
-          expect(operation.amount).to be(200)
-          expect(operation.odate).to eq('2023-23-09')
+          expect(operation.amount).to eq(200)
+          expect(operation.odate).to eq('2023-07-21 00:00:00.000000000 +0000')
           expect(operation.spend).to be false
           expect(operation.description).to eq('An updated operation')
           expect(operation.category_id).to eq(2)
 
-          expect(response).to redirect_to(operations_path)
+          expect(response).to redirect_to(operation_path(operation.id))
           expect(flash[:notice]).to eq('Operation was successfully updated.')
         end
       end

@@ -11,17 +11,30 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3 mt-4 row">
+    <div class="col-sm-1 col-form-label">
+      <strong><%= form.label :name %></strong>
+    </div>
+
+    <div class="col-sm-9">
+      <%= form.text_field :name, autocomplete: "Name", class: 'form-control form-control-lg'  %>
+    </div>
   </div>
+  <br>
+
+
+  <div class="mb-3 mt-4 row">
+    <div class="col-sm-1 col-form-label">
+      <strong><%= form.label :description %></strong>
+    </div>
+
+    <div class="col-sm-9">
+      <%= form.text_field :description, autocomplete: "Description", class: 'form-control form-control-lg'  %>
+    </div>
+  </div>
+  <br>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-dark' %>
   </div>
 <% end %>
